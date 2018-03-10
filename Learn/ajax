@@ -1,0 +1,4 @@
+OnBegin – xhr
+OnComplete – xhr, status
+OnSuccess – data, status, xhr
+OnFailure – xhr, status, error

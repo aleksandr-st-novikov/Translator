@@ -1,0 +1,98 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Translator</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/font-awesome/web-fonts-with-css/css/fontawesome-all.css" />
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/mdb.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/lib/font-awesome/web-fonts-with-css/css/fontawesome-all.min.css" />
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/mdb.min.css" />
+        <link rel="stylesheet" href="~/css/site.min.css" />
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    </environment>
+</head>
+<body class="fixed-sn">
+    <header>
+        <!-- Sidebar navigation -->
+        @await Html.PartialAsync("_AdminNav")
+        <!--/. Sidebar navigation -->
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-toggleable-md navbar-expand-lg navbar-dark stylish-color _scrolling-navbar _double-nav">
+            <!-- SideNav slide-out button -->
+            <div class="float-left">
+                <a href="#" data-activates="slide-out" class="button-collapse black-text"><i class="fa fa-bars"></i></a>
+            </div>
+            <ul class="nav navbar-nav nav-flex-icons ml-auto">
+                <li class="nav-item">
+                    <a href="/" class="nav-link"><i class="fa fa-home"></i> <span class="clearfix d-none d-sm-inline-block">Home</span></a>
+                </li>
+
+                @if (SignInManager.IsSignedIn(User))
+            {
+                <li class="nav-item">
+                    <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage" class="nav-link">
+                        <i class="fa fa-user prefix pr-1"></i>
+                        Hello @UserManager.GetUserName(User)!
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-area="" asp-controller="Account" asp-action="Logout" title="Log out" class="nav-link">Log out</a>
+                </li>
+        }
+
+            </ul>
+        </nav>
+        <!-- /.Navbar -->
+    </header>
+    <!--/.Double navigation-->
+    <!--Main layout-->
+    <main>
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
+    </main>
+    <!--/Main layout-->
+
+    <environment include="Development">
+        <script src="~/lib/popper.js/dist/umd/popper.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/mdb.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/lib/popper.js/dist/umd/popper.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="~/js/mdb.min.js"></script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+
+    <script>
+
+        // SideNav Initialization
+        $(".button-collapse").sideNav();
+
+        new WOW().init();
+
+    </script>
+</body>
+</html>

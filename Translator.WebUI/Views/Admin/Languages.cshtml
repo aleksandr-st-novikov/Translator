@@ -1,0 +1,84 @@
+﻿@using Translator.WebUI.Views.Admin
+
+@{
+    ViewData["Title"] = "Languages";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData.AddActivePage(AdminNavPages.Languages);
+}
+
+<h2>Languages</h2>
+
+<div class="table-responsive">
+    <div id="jsGrid"></div>
+</div>
+
+@section scripts {
+    <link href="~/lib/jsgrid/dist/jsgrid.css" rel="stylesheet" />
+    <link href="~/lib/jsgrid/dist/jsgrid-theme.css" rel="stylesheet" />
+    <script src="~/lib/jsgrid/dist/jsgrid.js"></script>
+    <script>
+        $(function () {
+            $("#jsGrid").jsGrid({
+                height: "750px",
+                width: "100%",
+
+                filtering: true,
+                inserting: true,
+                editing: true,
+                sorting: true,
+                paging: true,
+                autoload: true,
+
+                pageSize: 20,
+                pageButtonCount: 5,
+
+                deleteConfirm: "Do you really want to delete language?",
+
+                controller: {
+                    loadData: function (filter) {
+                        return $.ajax({
+                            type: "GET",
+                            url: "/api/Languages",
+                            data: filter,
+                            dataType: "json"
+                        });
+                    },
+
+                    insertItem: function (item) {
+                        return $.ajax({
+                            type: "POST",
+                            url: "/api/data",
+                            data: item,
+                            dataType: "json"
+                        });
+                    },
+
+                    updateItem: function (item) {
+                        return $.ajax({
+                            type: "PUT",
+                            url: "/api/data/" + item.ID,
+                            data: item,
+                            dataType: "json"
+                        });
+                    },
+
+                    deleteItem: function (item) {
+                        return $.ajax({
+                            type: "DELETE",
+                            url: "/api/data/" + item.ID,
+                            dataType: "json"
+                        });
+                    }
+                },
+
+                fields: [
+                    { name: "code", type: "text", width: 150, title: "Code" },
+                    { name: "title", type: "text", width: 200, title: "Title" },
+                    { type: "control" }
+                ]
+            });
+
+        });
+    </script>
+}
+

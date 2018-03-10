@@ -1,0 +1,116 @@
+﻿@using Translator.WebUI.Views.Admin
+
+<div id="slide-out" class="side-nav fixed mdb-sidenav" style="transform: translateX(0px);">
+    <ul class="custom-scrollbar list-unstyled ps ps--theme_default ps--active-y">
+        <!-- Logo -->
+        <li>
+            <div class="logo-wrapper waves-light">
+                <h4 class="img-fluid flex-center">
+                    Translator
+                </h4>
+            </div>
+            <hr class="hr-light">
+        </li>
+        <!--/. Logo -->
+        <!--Search Form-->
+        @*<li>
+                <form class="search-form" role="search">
+                    <div class="form-group md-form mt-0 pt-1 waves-light">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                </form>
+            </li>*@
+        <!--/.Search Form-->
+        <!-- Side navigation links -->
+        <li>
+            <ul id="side-menu" class="collapsible collapsible-accordion">
+                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
+                    <a class="collapsible-header waves-effect arrow-r @AdminNavPages.LanguagesNavClass(ViewContext)">
+                        <i class="fa fa-cog"></i> Settings<i class="fa fa-angle-down rotate-icon"></i>
+                    </a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li class="menu-item">
+                                <a asp-area="" asp-controller="Admin" asp-action="Languages" class="waves-effect @AdminNavPages.LanguagesNavClass(ViewContext)"> Languages</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a class="collapsible-header waves-effect arrow-r @AdminNavPages.UsersNavClass(ViewContext)">
+                        <i class="fa fa-users"></i> Users<i class="fa fa-angle-down rotate-icon"></i>
+                    </a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li class="menu-item">
+                                <a asp-area="" asp-controller="Admin" asp-action="Users" class="waves-effect @AdminNavPages.UsersNavClass(ViewContext)">Users</a>
+                            </li>
+                            <li>
+                                <a href="#" class="waves-effect">Roles</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                @*<li>
+                        <a class="collapsible-header waves-effect arrow-r"><i class="fa fa-hand-pointer-o"></i> Instruction<i class="fa fa-angle-down rotate-icon"></i></a>
+                        <div class="collapsible-body">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="#" class="waves-effect">For bloggers</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="waves-effect">For authors</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="collapsible-header waves-effect arrow-r"><i class="fa fa-eye"></i> About<i class="fa fa-angle-down rotate-icon"></i></a>
+                        <div class="collapsible-body">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="#" class="waves-effect">Introduction</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="waves-effect">Monthly meetings</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="collapsible-header waves-effect arrow-r"><i class="fa fa-envelope-o"></i> Contact me<i class="fa fa-angle-down rotate-icon"></i></a>
+                        <div class="collapsible-body">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="#" class="waves-effect">FAQ</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="waves-effect">Write a message</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="waves-effect">FAQ</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="waves-effect">Write a message</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="waves-effect">FAQ</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="waves-effect">Write a message</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="waves-effect">FAQ</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="waves-effect">Write a message</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>*@
+            </ul>
+        </li>
+        <!--/. Side navigation links -->
+    </ul>
+    <div class="sidenav-bg mask-strong"></div>
+</div>

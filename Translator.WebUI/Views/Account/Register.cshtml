@@ -1,0 +1,74 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<section class="container half-height bg-white">
+    <div class="container flex-center pt-5">
+        <div class="d-flex align-items-center content-height">
+            <div class="row flex-center pt-5 mt-3">
+                <div class="col-md-6 text-center text-md-left mb-5">
+                    <div>
+                        <h1 class="h1-responsive font-weight-bold wow fadeInLeft" data-wow-delay="0.3s">Sign up right now! </h1>
+                        <hr class="hr-light mb-5 wow fadeInLeft" data-wow-delay="0.3s">
+                        <h6 class="wow fadeInLeft" data-wow-delay="0.3s">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem repellendus quasi fuga nesciunt
+                            dolorum nulla magnam veniam sapiente, fugiat! Commodi sequi non animi ea dolor molestiae,
+                            quisquam iste, maiores. Nulla.
+                        </h6>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-xl-5">
+                    <!--Form-->
+                    <div class="card-register wow fadeInRight" data-wow-delay="0.3s">
+                        <div class="card-body">
+                            <!--Header-->
+                            <div class="text-center">
+                                <h3>
+                                    Register
+                                </h3>
+                            </div>
+
+                            <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+                                @*<div asp-validation-summary="All" class="text-danger"></div>*@
+                                <div class="md-form">
+                                    <i class="fa fa-user prefix"></i>
+                                    <label asp-for="UserName"></label>
+                                    <input asp-for="UserName" class="form-control" />
+                                    <span asp-validation-for="UserName" class="text-danger"></span>
+                                </div>
+                                <div class="md-form">
+                                    <i class="fa fa-envelope prefix"></i>
+                                    <label asp-for="Email"></label>
+                                    <input asp-for="Email" class="form-control" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="md-form">
+                                    <i class="fas fa-lock prefix active"></i>
+                                    <label asp-for="Password"></label>
+                                    <input asp-for="Password" class="form-control" />
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class="md-form">
+                                    <i class="fas fa-lock prefix active"></i>
+                                    <label asp-for="ConfirmPassword"></label>
+                                    <input asp-for="ConfirmPassword" class="form-control" />
+                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                </div>
+                                <div class="text-center mt-4">
+                                    <button type="submit" class="btn btn-mdb-color">Sign up</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

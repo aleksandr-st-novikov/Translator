@@ -1,0 +1,27 @@
+@using Microsoft.AspNetCore.Identity
+@using Translator.WebUI.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <ul class="navbar-nav mr-0 smooth-scroll">
+        <li class="nav-item">
+            <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage" class="nav-link">
+                <i class="fa fa-user prefix pr-1"></i>
+                Hello @UserManager.GetUserName(User)!
+            </a>
+        </li>
+        <li class="nav-item">
+            <a asp-area="" asp-controller="Account" asp-action="Logout" title="Log out" class="nav-link">Log out</a>
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="navbar-nav mr-0 smooth-scroll">
+        <li class="nav-item"><a asp-area="" asp-controller="Account" asp-action="Register" class="nav-link">Register</a></li>
+        <li class="nav-item"><a asp-area="" asp-controller="Account" asp-action="Login" class="nav-link">Log in</a></li>
+    </ul>
+}

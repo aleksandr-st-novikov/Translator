@@ -1,0 +1,45 @@
+﻿@model IndexViewModel
+@{
+    ViewData["Title"] = "Profile";
+    ViewData.AddActivePage(ManageNavPages.Index);
+}
+
+<h4>@ViewData["Title"]</h4>
+
+<div class="col-md-12 col-lg-8 col-12">
+    <form method="post"
+          data-ajax-success="onSuccess(data)"
+          data-ajax-failure="onFailure(xhr)"
+          data-ajax="true" data-ajax-method="POST">
+        @*<div asp-validation-summary="All" class="text-danger"></div>*@
+        <div class="md-form">
+            <label asp-for="Username"></label>
+            <input asp-for="Username" class="form-control" disabled />
+        </div>
+        <div class="md-form">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="md-form">
+            <label asp-for="PhoneNumber"></label>
+            <input asp-for="PhoneNumber" class="form-control" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-default">Save</button>
+    </form>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    @await Html.PartialAsync("_AjaxScriptsPartial")
+}
+
+<script>
+    var onSuccess = function (data) {
+        toastr["success"](data);
+    };
+    var onFailure = function (xhr) {
+        toastr["error"](xhr.responseText);
+    };
+</script>
